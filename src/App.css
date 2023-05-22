@@ -23,3 +23,10 @@ body{
   background-color: rgba(192, 11, 11, 0.98);
   color: #fff;
 }
+.txt{
+  font-size: 18px;
+  color: rgba(192, 11, 11, 0.98);
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-weight: bolder;
+}

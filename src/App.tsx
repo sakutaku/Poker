@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import CardView from "./CardView/CardView";
 import CardDeck from "./lib/CardDeck";
 import Card from "./lib/Card";
+import PokerHand from "./lib/PokerHand";
 import './cards.css';
 import './App.css';
 
@@ -12,9 +13,11 @@ const App = () => {
     const getCards = () => {
         const cardDeck = new CardDeck();
         const newCards = cardDeck.getCards(5);
-        console.log(newCards);
         setCards(newCards);
     };
+
+    const pokerHand = new PokerHand(cards);
+    const test = pokerHand.getOutcome();
 
     if(cards.length === 0) {
         return (
@@ -25,6 +28,7 @@ const App = () => {
     } else {
         return (
             <div className="App">
+
                 <div className="playingCards faceImages">
                     <CardView rank={cards[0].rank} suit={cards[0].suit}/>
                     <CardView rank={cards[1].rank} suit={cards[1].suit}/>
@@ -33,6 +37,7 @@ const App = () => {
                     <CardView rank={cards[4].rank} suit={cards[4].suit}/>
                 </div>
                 <button onClick={getCards} className="btn">Раздать карты</button>
+                <div className="txt">{test}</div>
             </div>
         );
     }
