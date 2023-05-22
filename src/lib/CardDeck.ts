@@ -2,7 +2,7 @@ import Card from "./Card";
 
 class CardDeck {
     private readonly ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-    private readonly suits = ['♦', '♥', '♣', '♠'];
+    private readonly suits = ['diams', 'hearts', 'spades', 'clubs'];
     public deck: Card[] = [];
     constructor() {
         this.suits.forEach(suit =>{
@@ -16,10 +16,8 @@ class CardDeck {
     getCard(): Card {
         const rand = Math.floor(Math.random() * this.deck.length);
         const randomCard = this.deck[rand];
-        const indexOfRandomCard = this.deck.indexOf(randomCard);
-        this.deck.splice(indexOfRandomCard, 1);
-
-        return this.deck[rand];
+        this.deck.splice(rand, 1);
+        return randomCard;
     }
 
     getCards(howMany: number): Card[] {
@@ -27,6 +25,7 @@ class CardDeck {
         for(let i = 0; i < howMany; i++) {
             arr.push(this.getCard());
         }
+
         return arr;
     }
 }
